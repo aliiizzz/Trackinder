@@ -1,2 +1,2 @@
-include ':app', ':login', ':common', ':spotify-login'
+include ':app', ':login', ':common', ':spotify-login', ':navigation'
 rootProject.name='Trackinder'

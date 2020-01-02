@@ -1,0 +1,8 @@
+apply plugin: "com.android.library"
+apply from: "../common/common.gradle"
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Dependencies.navigationUi
+    implementation Dependencies.navigationFragment
+}

@@ -3,10 +3,13 @@ object Dependencies {
     val core = "androidx.core:core-ktx:1.0.2"
     val constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
     val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+    val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
 }
 
 object Versions {
     val kotlin = "1.3.50"
+    val navigation = "2.1.0"
 }
 
 object TestDependencies {
@@ -23,4 +26,5 @@ object Modules {
     val login = ":login"
     val common = ":common"
     val spotifyLogin = ":spotify-login"
+    val navigation = ":navigation"
 }
