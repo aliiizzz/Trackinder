@@ -1,5 +1,11 @@
 apply plugin: "com.android.library"
 apply from: "../common/common.gradle"
+
+android {
+    defaultConfig {
+        buildConfigField "String", "spotifyClientId", String.valueOf(System.getenv("spotifyClientId"))
+    }
+}
 dependencies {
     implementation Dependencies.kotlin
     implementation Dependencies.appComapat

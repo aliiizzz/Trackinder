@@ -12,12 +12,14 @@ import kotlinx.android.synthetic.main.fragment_login.*
 
 class FragmentLogin: FragmentBase() {
 
+    private var token: String? = null
     private lateinit var loginHelper: SpotifyLogin
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loginHelper = SpotifyLoginImpl(System.getenv("spotifyClientId") ?: "",
+        loginHelper = SpotifyLoginImpl(BuildConfig.spotifyClientId,
             REDIRECT_URL, activity!!)
+        token = arguments?.getString("token")
     }
 
     override fun onCreateView(
@@ -30,13 +32,6 @@ class FragmentLogin: FragmentBase() {
         super.onViewCreated(view, savedInstanceState)
         button_login.setOnClickListener {
             loginHelper.login()
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        loginHelper.checkResult(requestCode, resultCode, data) { token, error ->
-
         }
     }
 
