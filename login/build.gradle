@@ -1,6 +1,6 @@
 apply plugin: "com.android.library"
 apply from: "../common/common.gradle"
-
+apply plugin: "kotlin-kapt"
 android {
     defaultConfig {
         buildConfigField "String", "spotifyClientId", String.valueOf(System.getenv("spotifyClientId"))
@@ -16,4 +16,8 @@ dependencies {
     implementation Dependencies.navigationFragment
     implementation Dependencies.navigationUi
     implementation project(Modules.navigation)
+    implementation Dependencies.livedata
+    implementation Libraries.dagger
+    kapt Libraries.daggerCompiler
+    implementation project(Modules.di)
 }

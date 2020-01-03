@@ -1,6 +1,6 @@
 apply plugin: "com.android.application"
 apply from: "../common/common.gradle"
-
+apply plugin: "kotlin-kapt"
 android {
     defaultConfig {
         applicationId "com.trackinder.app"
@@ -14,4 +14,8 @@ dependencies {
     implementation Dependencies.constraintLayout
     implementation project(Modules.navigation)
     implementation project(Modules.login)
+    implementation Libraries.dagger
+    kapt Libraries.daggerCompiler
+    implementation project(Modules.common)
+    implementation project(Modules.di)
 }

@@ -5,11 +5,14 @@ object Dependencies {
     val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+    val livedata = "androidx.lifecycle:lifecycle-extensions:${Versions.livedata}"
 }
 
 object Versions {
     val kotlin = "1.3.50"
     val navigation = "2.1.0"
+    val dagger = "2.25.2"
+    val livedata = "2.1.0"
 }
 
 object TestDependencies {
@@ -20,6 +23,8 @@ object TestDependencies {
 
 object Libraries {
     val spotify = "com.spotify.android:auth:1.1.0"
+    val dagger = "com.google.dagger:dagger:${Versions.dagger}"
+    val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
 }
 
 object Modules {
@@ -27,4 +32,5 @@ object Modules {
     val common = ":common"
     val spotifyLogin = ":spotify-login"
     val navigation = ":navigation"
+    val di = ":di"
 }

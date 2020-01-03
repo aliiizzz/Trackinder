@@ -2,4 +2,4 @@ package com.trackinder.common
 
 import androidx.lifecycle.ViewModel
 
-class ViewModelBase : ViewModel()
+open class ViewModelBase : ViewModel()
