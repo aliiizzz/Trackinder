@@ -30,7 +30,6 @@ class FragmentLogin: FragmentBase() {
         loginHelper = SpotifyLoginImpl(BuildConfig.spotifyClientId,
             REDIRECT_URL, activity!!)
         token = arguments?.getString("token")
-        viewmodel.test()
     }
 
     override fun onCreateView(
@@ -41,6 +40,7 @@ class FragmentLogin: FragmentBase() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewmodel.checkToken(token)
         button_login.setOnClickListener {
             loginHelper.login()
         }
