@@ -3,6 +3,5 @@ apply from: "../common/common.gradle"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation Dependencies.livedata
-    implementation project(Modules.repository)
+    implementation project(Modules.local)
 }

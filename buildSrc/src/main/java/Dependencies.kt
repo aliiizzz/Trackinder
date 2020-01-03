@@ -6,6 +6,10 @@ object Dependencies {
     val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     val livedata = "androidx.lifecycle:lifecycle-extensions:${Versions.livedata}"
+
+    val room = "androidx.room:room-runtime:${Versions.room}"
+    val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    val roomKtx = "androidx.room:room-ktx:${Versions.room}"
 }
 
 object Versions {
@@ -13,6 +17,7 @@ object Versions {
     val navigation = "2.1.0"
     val dagger = "2.25.2"
     val livedata = "2.1.0"
+    val room = "2.2.3"
 }
 
 object TestDependencies {
@@ -33,4 +38,6 @@ object Modules {
     val spotifyLogin = ":spotify-login"
     val navigation = ":navigation"
     val di = ":di"
+    val local = ":local"
+    val repository = ":repository"
 }
