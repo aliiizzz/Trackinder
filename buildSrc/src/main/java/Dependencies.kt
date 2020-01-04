@@ -40,4 +40,5 @@ object Modules {
     val di = ":di"
     val local = ":local"
     val repository = ":repository"
+    val domain = ":domain"
 }
