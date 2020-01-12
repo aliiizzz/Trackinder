@@ -1,7 +1,14 @@
 apply plugin: 'com.android.library'
 apply from: "../common/common.gradle"
-
+apply plugin: "kotlin-kapt"
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(Modules.local)
+    implementation project(Modules.domain)
+    implementation project(Modules.di)
+    implementation Libraries.dagger
+    kapt Libraries.daggerCompiler
+//    implementation Dependencies.room
+//    kapt Dependencies.roomCompiler
+//    implementation Dependencies.roomKtx
 }

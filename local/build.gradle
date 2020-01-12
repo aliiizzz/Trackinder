@@ -6,4 +6,7 @@ dependencies {
     implementation Dependencies.room
     kapt Dependencies.roomCompiler
     implementation Dependencies.roomKtx
+    implementation project(Modules.di)
+    implementation Libraries.dagger
+    kapt Libraries.daggerCompiler
 }

@@ -9,7 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.trackinder.common.FragmentBase
 import com.trackinder.di.AppComponent
 import com.trackinder.di.Provider
+import com.trackinder.local.di.LocalModule
 import com.trackinder.login.di.DaggerLoginComponent
+import com.trackinder.repository.di.RepoComponent
 import com.trackinder.spotify_login.SpotifyLogin
 import com.trackinder.spotify_login.SpotifyLoginImpl
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -25,7 +27,10 @@ class FragmentLogin: FragmentBase() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (activity!!.application as Provider).getComponent().apply {
-            DaggerLoginComponent.factory().create(this).inject(this@FragmentLogin)
+            DaggerLoginComponent.builder()
+                .appComponent(this)
+                .localModule(LocalModule(context!!))
+                .build().inject(this@FragmentLogin)
         }
         loginHelper = SpotifyLoginImpl(BuildConfig.spotifyClientId,
             REDIRECT_URL, activity!!)

@@ -1,8 +1,11 @@
 apply plugin: 'com.android.library'
 apply from: "../common/common.gradle"
+apply plugin: "kotlin-kapt"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Dependencies.livedata
-    implementation project(Modules.repository)
+    implementation Libraries.dagger
+    kapt Libraries.daggerCompiler
+    implementation project(Modules.di)
 }
