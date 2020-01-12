@@ -1,7 +1,10 @@
 apply plugin: "com.android.library"
 apply from: "../common/common.gradle"
+apply plugin: "kotlin-kapt"
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Dependencies.kotlin
     implementation Libraries.spotify
+    kapt Libraries.daggerCompiler
+    implementation Libraries.dagger
 }
