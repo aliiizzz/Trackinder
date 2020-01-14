@@ -1,7 +1,8 @@
 package com.trackinder.domain
 
-import com.trackinder.repository.UserRepository
+import com.trackinder.UserRepository
+import javax.inject.Inject
 
-class UseCaseSaveToken constructor(private val userRepository: UserRepository): UseCaseBase<String, Unit> {
-    override fun execute(param: String) = userRepository.saveToken(param)
+class UseCaseSaveToken @Inject constructor(private val userRepository: UserRepository): UseCaseBase<String, Unit> {
+    override suspend fun execute(param: String) = userRepository.saveToken(param)
 }

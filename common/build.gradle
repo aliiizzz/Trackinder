@@ -8,4 +8,5 @@ dependencies {
     implementation Dependencies.livedata
     implementation Libraries.dagger
     kapt Libraries.daggerCompiler
+    implementation Dependencies.navigationFragment
 }

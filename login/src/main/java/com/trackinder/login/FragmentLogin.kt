@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.trackinder.common.FragmentBase
-import com.trackinder.di.AppComponent
+import com.trackinder.common.ViewModelBase
 import com.trackinder.di.Provider
+import com.trackinder.local.di.LocalModule
 import com.trackinder.login.di.DaggerLoginComponent
-import com.trackinder.spotify_login.SpotifyLogin
-import com.trackinder.spotify_login.SpotifyLoginImpl
+import com.trackinder.spotify_login.di.SpotifyModule
 import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
@@ -20,15 +20,16 @@ class FragmentLogin: FragmentBase() {
     @Inject lateinit var factory: ViewModelProvider.Factory
     private val viewmodel: ViewModelLogin by viewModels { factory }
     private var token: String? = null
-    private lateinit var loginHelper: SpotifyLogin
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (activity!!.application as Provider).getComponent().apply {
-            DaggerLoginComponent.factory().create(this).inject(this@FragmentLogin)
+            DaggerLoginComponent.builder()
+                .appComponent(this)
+                .localModule(LocalModule(context!!))
+                .spotifyModule(SpotifyModule(activity!!, BuildConfig.spotifyClientId))
+                .build().inject(this@FragmentLogin)
         }
-        loginHelper = SpotifyLoginImpl(BuildConfig.spotifyClientId,
-            REDIRECT_URL, activity!!)
         token = arguments?.getString("token")
     }
 
@@ -42,11 +43,9 @@ class FragmentLogin: FragmentBase() {
         super.onViewCreated(view, savedInstanceState)
         viewmodel.checkToken(token)
         button_login.setOnClickListener {
-            loginHelper.login()
+            viewmodel.loginClicked()
         }
     }
 
-    companion object {
-        val REDIRECT_URL = "https://trackinder.com"
-    }
+    override fun getViewModel(): ViewModelBase = viewmodel
 }

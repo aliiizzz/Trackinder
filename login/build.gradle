@@ -21,4 +21,6 @@ dependencies {
     kapt Libraries.daggerCompiler
     implementation project(Modules.di)
     implementation project(Modules.domain)
+    implementation project(Modules.repository)
+    implementation project(Modules.local)
 }

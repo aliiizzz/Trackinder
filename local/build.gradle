@@ -3,7 +3,10 @@ apply from: "../common/common.gradle"
 apply plugin: "kotlin-kapt"
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation Dependencies.room
+    api Dependencies.room
     kapt Dependencies.roomCompiler
     implementation Dependencies.roomKtx
+    implementation project(Modules.di)
+    implementation Libraries.dagger
+    kapt Libraries.daggerCompiler
 }
