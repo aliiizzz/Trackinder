@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.trackinder.common.FragmentBase
+import com.trackinder.common.ViewModelBase
 import com.trackinder.di.Provider
 import com.trackinder.local.di.LocalModule
 import com.trackinder.login.di.DaggerLoginComponent
@@ -45,4 +46,6 @@ class FragmentLogin: FragmentBase() {
             viewmodel.loginClicked()
         }
     }
+
+    override fun getViewModel(): ViewModelBase = viewmodel
 }

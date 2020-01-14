@@ -1,5 +1,6 @@
 package com.trackinder
 
 interface UserRepository {
-    fun saveToken(param: String)
+    suspend fun saveToken(param: String)
+    suspend fun getToken(): String
 }

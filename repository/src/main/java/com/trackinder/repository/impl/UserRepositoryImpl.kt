@@ -7,7 +7,9 @@ import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(private val userDao: UserDao) :
     UserRepository {
-    override fun saveToken(param: String) {
+    override suspend fun saveToken(param: String) {
         userDao.saveToken(TokenInfo(1, param))
     }
+
+    override suspend fun getToken(): String = userDao.getToken()
 }
