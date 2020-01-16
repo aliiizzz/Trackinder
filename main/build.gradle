@@ -1,0 +1,21 @@
+apply plugin: 'com.android.library'
+apply from: "../common/common.gradle"
+apply plugin: "kotlin-kapt"
+
+dependencies {
+    implementation Dependencies.kotlin
+    implementation Dependencies.appComapat
+    implementation Dependencies.core
+    implementation Dependencies.constraintLayout
+    implementation project(Modules.common)
+    implementation project(Modules.navigation)
+    implementation Dependencies.livedata
+    implementation Libraries.dagger
+    kapt Libraries.daggerCompiler
+    implementation project(Modules.di)
+    implementation project(Modules.domain)
+    implementation project(Modules.repository)
+    implementation project(Modules.local)
+    implementation Dependencies.navigationFragment
+    implementation Dependencies.navigationUi
+}

@@ -12,6 +12,7 @@ import com.trackinder.common.ViewModelBase
 import com.trackinder.di.Provider
 import com.trackinder.local.di.ModuleLocal
 import com.trackinder.splash.di.DaggerComponentSplash
+import com.trackinder.splash.di.ModuleSplash
 import javax.inject.Inject
 
 class FragmentSplash : FragmentBase()  {
@@ -23,9 +24,14 @@ class FragmentSplash : FragmentBase()  {
         (activity!!.application as Provider).getComponent().apply {
             DaggerComponentSplash.builder()
                 .componentApp(this)
+                .moduleSplash(ModuleSplash(getToken()))
                 .moduleLocal(ModuleLocal(context!!)).build().inject(this@FragmentSplash)
         }
     }
+
+    private fun getToken(): String? = arguments?.getString("token")
+        ?.split("&")?.takeIf { it.size > 1 }?.get(0)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -28,16 +28,17 @@ class ViewModelSplash @Inject constructor(
         viewModelScope.launch {
             token?.also {
                 useCaseSaveToken.execute(it)
+                navigate(To(FragmentSplashDirections.actionSplashToMain()))
             }
             withContext(appDispatchers.io) {
                 tokenInfo = useCaseToken(Unit)
             }
 
             _navigateMain.addSource(tokenInfo) {
-                if (it != null) {
+                if (it == null) {
                     navigate(To(FragmentSplashDirections.actionSplashToLogin()))
                 } else {
-                    navigate(To(FragmentSplashDirections.actionSplashToLogin()))
+                    navigate(To(FragmentSplashDirections.actionSplashToMain()))
                 }
             }
         }

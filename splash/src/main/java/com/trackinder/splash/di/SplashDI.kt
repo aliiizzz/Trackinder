@@ -21,7 +21,10 @@ interface ComponentSplash {
 }
 
 @Module
-class ModuleSplash {
+class ModuleSplash(val token: String?) {
+
+    @Provides
+    fun provideToken() = token
 
     @Provides
     @IntoMap
