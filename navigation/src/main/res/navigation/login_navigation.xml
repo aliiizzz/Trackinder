@@ -8,6 +8,9 @@
         android:id="@+id/fragment_login"
         android:label="Login"
         >
-        <deepLink app:uri="https://trackinder.com/#access_token={token}" />
+
     </fragment>
+    <deepLink
+        android:id="@+id/deepLink"
+        app:uri="https://trackinder.com/#access_token={token}" />
 </navigation>

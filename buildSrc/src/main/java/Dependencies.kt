@@ -41,4 +41,5 @@ object Modules {
     val local = ":local"
     val repository = ":repository"
     val domain = ":domain"
+    val splash = ":splash"
 }

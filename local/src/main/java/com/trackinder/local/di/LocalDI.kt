@@ -2,20 +2,19 @@ package com.trackinder.local.di
 
 import android.content.Context
 import androidx.room.Room
-import com.trackinder.di.AppComponent
 import com.trackinder.local.AppDatabase
 import com.trackinder.local.UserDao
 import dagger.Component
 import dagger.Module
 import dagger.Provides
 
-@Component(modules = [LocalModule::class])
-interface LocalComponent {
+@Component(modules = [ModuleLocal::class])
+interface ComponentLocal {
 
 }
 
 @Module
-class LocalModule(val context: Context) {
+class ModuleLocal(val context: Context) {
 
     @Provides
     fun provideDb(): AppDatabase = Room.databaseBuilder(

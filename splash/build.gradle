@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 apply from: "../common/common.gradle"
 apply plugin: "kotlin-kapt"
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Dependencies.kotlin
     implementation Dependencies.appComapat
     implementation Dependencies.core

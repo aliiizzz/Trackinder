@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.trackinder.common.FragmentBase
 import com.trackinder.common.ViewModelBase
 import com.trackinder.di.Provider
-import com.trackinder.local.di.LocalModule
+import com.trackinder.local.di.ModuleLocal
 import com.trackinder.login.di.DaggerLoginComponent
 import com.trackinder.spotify_login.di.SpotifyModule
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -25,8 +25,8 @@ class FragmentLogin: FragmentBase() {
         super.onCreate(savedInstanceState)
         (activity!!.application as Provider).getComponent().apply {
             DaggerLoginComponent.builder()
-                .appComponent(this)
-                .localModule(LocalModule(context!!))
+                .componentApp(this)
+                .moduleLocal(ModuleLocal(context!!))
                 .spotifyModule(SpotifyModule(activity!!, BuildConfig.spotifyClientId))
                 .build().inject(this@FragmentLogin)
         }

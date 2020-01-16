@@ -1,5 +1,7 @@
 package com.trackinder.repository.impl
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.trackinder.local.UserDao
 import com.trackinder.local.model.TokenInfo
 import com.trackinder.UserRepository
@@ -11,5 +13,10 @@ class UserRepositoryImpl @Inject constructor(private val userDao: UserDao) :
         userDao.saveToken(TokenInfo(1, param))
     }
 
-    override suspend fun getToken(): String = userDao.getToken()
+    override suspend fun getToken(): LiveData<String> {
+        val result = MutableLiveData<String>()
+        val value = userDao.getToken()
+        result.postValue(value)
+        return result
+    }
 }

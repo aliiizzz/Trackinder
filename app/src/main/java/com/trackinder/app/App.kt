@@ -1,19 +1,19 @@
 package com.trackinder.app
 
 import android.app.Application
-import com.trackinder.di.AppComponent
-import com.trackinder.di.DaggerAppComponent
+import androidx.fragment.app.FragmentActivity
+import com.trackinder.di.ComponentApp
+import com.trackinder.di.DaggerComponentApp
 import com.trackinder.di.Provider
 
 class App: Application(), Provider {
 
-    private lateinit var appComponent: AppComponent
+    private lateinit var appComponent: ComponentApp
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent.create()
+        appComponent = DaggerComponentApp.create()
     }
 
-    override fun getComponent(): AppComponent = appComponent
-    //test test
+    override fun getComponent(): ComponentApp = appComponent
 }

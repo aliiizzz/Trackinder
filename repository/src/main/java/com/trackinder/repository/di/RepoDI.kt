@@ -1,22 +1,21 @@
 package com.trackinder.repository.di
 
-import com.trackinder.di.AppComponent
 import com.trackinder.UserRepository
-import com.trackinder.di.DomainComponent
-import com.trackinder.local.di.LocalComponent
-import com.trackinder.local.di.LocalModule
+import com.trackinder.di.ComponentDomain
+import com.trackinder.local.di.ComponentLocal
+import com.trackinder.local.di.ModuleLocal
 import com.trackinder.repository.impl.UserRepositoryImpl
 import dagger.Component
 import dagger.Module
 import dagger.Provides
 
-@Component(modules = [RepoModule::class, LocalModule::class], dependencies = [LocalComponent::class])
-interface RepoComponent: DomainComponent {
+@Component(modules = [ModuleRepo::class, ModuleLocal::class], dependencies = [ComponentLocal::class])
+interface ComponentRepo: ComponentDomain {
 
 }
 
 @Module()
-class RepoModule {
+class ModuleRepo {
 
     @Provides
     fun provideUserRepository(impl: UserRepositoryImpl): UserRepository = impl

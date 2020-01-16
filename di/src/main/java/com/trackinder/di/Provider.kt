@@ -1,5 +1,5 @@
 package com.trackinder.di
 
 interface Provider {
-    fun getComponent(): AppComponent
+    fun getComponent(): ComponentApp
 }
