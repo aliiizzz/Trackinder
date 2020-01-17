@@ -3,14 +3,10 @@ apply from: "../common/common.gradle"
 apply plugin: "kotlin-kapt"
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(Modules.local)
-    implementation project(Modules.domain)
-    implementation project(Modules.di)
-    implementation project(Modules.remote)
-    implementation Libraries.dagger
-    kapt Libraries.daggerCompiler
-    implementation Dependencies.livedata
     implementation Libraries.retrofit
     implementation Libraries.gsonConverter
     implementation Libraries.gson
+    implementation project(Modules.di)
+    implementation Libraries.dagger
+    kapt Libraries.daggerCompiler
 }

@@ -30,6 +30,9 @@ object Libraries {
     val spotify = "com.spotify.android:auth:1.1.0"
     val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+    val retrofit = "com.squareup.retrofit2:retrofit:2.5.0"
+    val gson = "com.google.code.gson:gson:2.8.6"
+    val gsonConverter = "com.squareup.retrofit2:converter-gson:2.5.0"
 }
 
 object Modules {
@@ -42,4 +45,6 @@ object Modules {
     val repository = ":repository"
     val domain = ":domain"
     val splash = ":splash"
+    val main = ":main"
+    val remote = ":remote"
 }

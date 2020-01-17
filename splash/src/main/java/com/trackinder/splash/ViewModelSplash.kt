@@ -27,7 +27,9 @@ class ViewModelSplash @Inject constructor(
     init {
         viewModelScope.launch {
             token?.also {
-                useCaseSaveToken.execute(it)
+                withContext(appDispatchers.io) {
+                    useCaseSaveToken.execute(it)
+                }
                 navigate(To(FragmentSplashDirections.actionSplashToMain()))
             }
             withContext(appDispatchers.io) {

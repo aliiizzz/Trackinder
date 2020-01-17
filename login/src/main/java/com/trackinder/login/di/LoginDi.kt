@@ -6,6 +6,7 @@ import com.trackinder.common.ViewModelKey
 import com.trackinder.di.ComponentApp
 import com.trackinder.local.di.ModuleLocal
 import com.trackinder.login.*
+import com.trackinder.remote.di.ModuleRemote
 import com.trackinder.repository.di.ModuleRepo
 import com.trackinder.spotify_login.di.SpotifyModule
 import dagger.Component
@@ -23,7 +24,7 @@ class LoginModule {
 }
 
 @Component(modules = [LoginModule::class, ViewModelBuilder::class, ModuleRepo::class,
-    ModuleLocal::class, SpotifyModule::class],
+    ModuleLocal::class, SpotifyModule::class, ModuleRemote::class],
     dependencies = [ComponentApp::class])
 interface LoginComponent {
 
