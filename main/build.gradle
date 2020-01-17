@@ -16,6 +16,7 @@ dependencies {
     implementation project(Modules.domain)
     implementation project(Modules.repository)
     implementation project(Modules.local)
+    implementation project(Modules.remote)
     implementation Dependencies.navigationFragment
     implementation Dependencies.navigationUi
 }
