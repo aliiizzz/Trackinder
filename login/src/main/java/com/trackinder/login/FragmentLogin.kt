@@ -11,6 +11,7 @@ import com.trackinder.common.ViewModelBase
 import com.trackinder.di.Provider
 import com.trackinder.local.di.ModuleLocal
 import com.trackinder.login.di.DaggerLoginComponent
+import com.trackinder.remote.di.ModuleRemote
 import com.trackinder.spotify_login.di.SpotifyModule
 import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject

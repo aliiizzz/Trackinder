@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.trackinder.common.BuildConfig
 import com.trackinder.common.FragmentBase
 import com.trackinder.common.ViewModelBase
 import com.trackinder.di.Provider
 import com.trackinder.local.di.ModuleLocal
+import com.trackinder.remote.di.ModuleRemote
 import com.trackinder.splash.di.DaggerComponentSplash
 import com.trackinder.splash.di.ModuleSplash
 import javax.inject.Inject
@@ -25,7 +27,8 @@ class FragmentSplash : FragmentBase()  {
             DaggerComponentSplash.builder()
                 .componentApp(this)
                 .moduleSplash(ModuleSplash(getToken()))
-                .moduleLocal(ModuleLocal(context!!)).build().inject(this@FragmentSplash)
+                .moduleLocal(ModuleLocal(context!!))
+                .build().inject(this@FragmentSplash)
         }
     }
 

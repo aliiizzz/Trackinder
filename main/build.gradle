@@ -3,11 +3,11 @@ apply from: "../common/common.gradle"
 apply plugin: "kotlin-kapt"
 
 dependencies {
+    implementation project(Modules.common)
     implementation Dependencies.kotlin
     implementation Dependencies.appComapat
     implementation Dependencies.core
     implementation Dependencies.constraintLayout
-    implementation project(Modules.common)
     implementation project(Modules.navigation)
     implementation Dependencies.livedata
     implementation Libraries.dagger
@@ -19,4 +19,7 @@ dependencies {
     implementation project(Modules.remote)
     implementation Dependencies.navigationFragment
     implementation Dependencies.navigationUi
+    implementation Libraries.retrofit
+    implementation Libraries.gsonConverter
+    implementation Libraries.gson
 }

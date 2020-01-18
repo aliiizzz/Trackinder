@@ -1,6 +1,7 @@
 package com.trackinder.remote.di
 
 import com.trackinder.di.ComponentApp
+import com.trackinder.remote.BuildConfig
 import com.trackinder.remote.api.UserApi
 import dagger.Component
 import dagger.Module
@@ -11,9 +12,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Component(dependencies = [ComponentApp::class], modules = [ModuleRemote::class])
 interface ComponentRemote
 @Module
-class ModuleRemote(val baseUrl: String) {
+class ModuleRemote() {
     @Provides
-    fun provideRetrofit() = Retrofit.Builder().baseUrl(baseUrl)
+    fun provideRetrofit() = Retrofit.Builder().baseUrl(BuildConfig.baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

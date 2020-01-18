@@ -1,6 +1,11 @@
 apply plugin: 'com.android.library'
 apply from: "../common/common.gradle"
 apply plugin: "kotlin-kapt"
+android {
+    defaultConfig {
+        buildConfigField "String", "baseUrl", '"https://api.spotify.com/v1/"'
+    }
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Libraries.retrofit

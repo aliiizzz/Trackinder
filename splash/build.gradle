@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply from: "../common/common.gradle"
 apply plugin: "kotlin-kapt"
+
 dependencies {
     implementation Dependencies.kotlin
     implementation Dependencies.appComapat
@@ -15,6 +16,10 @@ dependencies {
     implementation project(Modules.domain)
     implementation project(Modules.repository)
     implementation project(Modules.local)
+    implementation project(Modules.remote)
     implementation Dependencies.navigationFragment
     implementation Dependencies.navigationUi
+    implementation Libraries.retrofit
+    implementation Libraries.gsonConverter
+    implementation Libraries.gson
 }
