@@ -10,4 +10,6 @@ dependencies {
     implementation Libraries.dagger
     kapt Libraries.daggerCompiler
     implementation Dependencies.navigationFragment
+    implementation project(Modules.domain)
+    implementation project(Modules.navigation)
 }

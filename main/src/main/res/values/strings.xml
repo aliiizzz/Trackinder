@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">main</string>
+    <string name="import_playlists">import playlists</string>
 </resources>

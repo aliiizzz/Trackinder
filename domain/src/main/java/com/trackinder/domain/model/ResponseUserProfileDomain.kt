@@ -1,9 +1,9 @@
 package com.trackinder.domain.model
 
 data class ResponseUserProfileDomain(
-    val country: String,
+    val country: String?,
     val images: List<ImagesItemDomain>,
-    val product: String,
+    val product: String?,
     val followers: FollowersDomain,
     val href: String?,
     val id: String,
@@ -11,7 +11,7 @@ data class ResponseUserProfileDomain(
     val type: String,
     val externalUrls: ExternalUrlsDomain,
     val uri: String,
-    val email: String
+    val email: String?
 )
 
 data class ImagesItemDomain(

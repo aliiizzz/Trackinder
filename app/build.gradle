@@ -5,6 +5,9 @@ android {
     defaultConfig {
         applicationId "com.trackinder.app"
     }
+    dataBinding {
+        enabled = true
+    }
 }
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

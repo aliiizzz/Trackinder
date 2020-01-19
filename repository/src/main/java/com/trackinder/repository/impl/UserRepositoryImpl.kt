@@ -7,9 +7,11 @@ import com.trackinder.local.model.TokenInfo
 import com.trackinder.UserRepository
 import com.trackinder.domain.model.*
 import com.trackinder.remote.api.UserApi
+import com.trackinder.repository.ErrorHandler
 import javax.inject.Inject
 
-class UserRepositoryImpl @Inject constructor(private val userDao: UserDao, private val userApi: UserApi) :
+class UserRepositoryImpl @Inject constructor(private val userDao: UserDao, private val userApi: UserApi,
+                                             private val errorHandler: ErrorHandler) :
     UserRepository {
     override suspend fun saveToken(param: String) {
         userDao.saveToken(TokenInfo(1, param))
@@ -30,18 +32,19 @@ class UserRepositoryImpl @Inject constructor(private val userDao: UserDao, priva
             result.postValue(Resource(Status.SUCCESS,
                 value.let {
                     ResponseUserProfileDomain(
-                        it.country!!, it.images?.map {
+                        it.country, it.images?.map {
                             ImagesItemDomain(it!!.width!!, it.url, it.height!!)
-                        } ?: listOf(), it.product!!, it.followers?.let {
+                        } ?: listOf(), it.product, it.followers?.let {
                             FollowersDomain(it.total!!)
                         }!!, it.href, it.id!!, it.displayName!!, it.type!!, it.externalUrls.let {
                             ExternalUrlsDomain(it?.spotify)
-                        }, it.uri!!, it.email!!
+                        }, it.uri!!, it.email
                     )
                 }, null))
         } catch (e: Exception) {
             e.printStackTrace()
-            result.postValue(Resource(Status.ERROR, null, e))
+            val info = errorHandler.handler(e)
+            result.postValue(Resource(Status.ERROR, null, info))
         }
         return result
     }
